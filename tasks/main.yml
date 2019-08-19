@@ -1,0 +1,225 @@
+---
+# tasks file for zabbix-server
+#
+
+- stat: path=/etc/yum.repos.d/zabbix.repo
+  register: zabbix_repo
+
+- name: Copy Zabbix repo RPM
+  copy:
+    dest: /tmp/zabbix-release-3.4-2.el7.noarch.rpm
+    owner: root
+    mode: 0644
+    src: zabbix-release-3.4-2.el7.noarch.rpm
+  when: zabbix_repo.stat.exists == False
+
+- name: Install Zabbix repo RPM
+  command: bash -c 'rpm -iv /tmp/zabbix-release-3.4-2.el7.noarch.rpm; rm -f /tmp/zabbix-release-3.4-2.el7.noarch.rpm'
+  command_warnings: False
+  args:
+    creates: /etc/yum.repos.d/zabbix.repo
+
+- name: Configure repo proxy (zabbix)
+  lineinfile:
+    path: /etc/yum.repos.d/zabbix.repo
+    state: present
+    line: "proxy={{zabbix_server_repo_proxy}}"
+    insertafter: '^\[zabbix\]'
+  when: zabbix_server_repo_proxy is defined
+
+- name: Configure repo proxy (zabbix-non-supported)
+  lineinfile:
+    path: /etc/yum.repos.d/zabbix.repo
+    state: present
+    line: "proxy={{zabbix_server_repo_proxy}}"
+    insertafter: '^\[zabbix-non-supported\]'
+  when: zabbix_server_repo_proxy is defined
+
+- name: Install Zabbix
+  yum:
+    name: "{{ item }}"
+    state: present
+  when: ansible_os_family == "RedHat" and ansible_pkg_mgr == "yum"
+  with_items:
+    - zabbix-server-mysql
+    - zabbix-web-mysql
+    - zabbix-get
+    - zabbix-sender
+    - mariadb
+
+- name: Check MySQL DB
+  command: bash -c "mysql -uzabbix -p{{lookup(passdb, zabbix_server_db_pass)}} -h {{zabbix_server_db_host}} -e 'select * from users;' zabbix"
+  register: result_mysql_check
+  ignore_errors: True
+
+# TODO: MySQL hostname could be dynamic from config
+- name: Setup MySQL DB
+  command: bash -c "zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p{{lookup(passdb, zabbix_server_db_pass)}} -h {{zabbix_server_db_host}} zabbix"
+  when: result_mysql_check is failed
+
+- name: Configure Zabbix Server Ansible-Info
+  lineinfile:
+    path: /etc/zabbix/zabbix_server.conf
+    state: present
+    line: '# Partly managed by Ansible!'
+    insertbefore: BOF
+
+- name: Configure Zabbix Server DBHost
+  lineinfile:
+    path: /etc/zabbix/zabbix_server.conf
+    regexp: '^DBHost='
+    state: present
+    line: "DBHost={{zabbix_server_db_host}}"
+    insertafter: '^# DBHost=localhost'
+
+- name: Configure Zabbix Server DBPassword
+  lineinfile:
+    path: /etc/zabbix/zabbix_server.conf
+    regexp: '^DBPassword='
+    state: present
+    line: "DBPassword={{lookup(passdb, zabbix_server_db_pass)}}"
+    insertafter: '^# DBPassword='
+
+- name: enable and start Zabbix Server
+  service: name=zabbix-server enabled=yes state=restarted daemon_reload=yes
+
+- name: Configure Apache/PHP for Zabbix
+  lineinfile:
+    path: /etc/httpd/conf.d/zabbix.conf
+    regexp: '^\s*php_value date.timezone'
+    state: present
+    line: "        php_value date.timezone {{zabbix_server_php_timezone}}"
+    insertafter: '^\s*# php_value date.timezone'
+
+- name: Create PHP Zabbix configuration
+  template:
+    src: "zabbix.conf.php.j2"
+    dest: "/etc/zabbix/web/zabbix.conf.php"
+
+- name: enable and start Apache Server
+  service: name=httpd enabled=yes state=restarted daemon_reload=yes
+
+- name: Open the Firewalld port 80/tcp on Zabbix
+  firewalld: port=80/tcp permanent=true state=enabled
+
+- name: Install flowdock.sh
+  copy:
+    dest: /usr/lib/zabbix/alertscripts/flowdock.sh
+    owner: root
+    mode: 0755
+    src: flowdock.sh
+
+- name: Install slack.sh
+  copy:
+    dest: /usr/lib/zabbix/alertscripts/slack.sh
+    owner: root
+    mode: 0755
+    src: slack.sh
+
+- name: Install ipmi-sensor-discovery.sh
+  copy:
+    dest: /usr/lib/zabbix/externalscripts/ipmi-sensor-discovery.sh
+    owner: root
+    mode: 0755
+    src: ipmi-sensor-discovery.sh
+
+- name: Create host groups
+  become: no
+  local_action:
+    module: zabbix_group
+    server_url: "{{zabbix_server_url}}"
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    state: present
+    host_groups:
+      - HP DL380 G9
+      - Infrastructure
+      - Scheduler
+      - Slack Alarm
+      - Rabbit Servers
+      - PostgreSQL
+      - KVM
+
+- name: Import Zabbix template IPMI HP DL380 G9
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_impi_hp_dl380_g9.json') }}"
+    template_name: IPMI HP DL380 G9
+    template_groups:
+      - HP DL380 G9
+
+- name: Import Zabbix template Eaton 9130
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_eaton_9130.json') }}"
+    template_name: Template Eaton 9130
+    template_groups:
+      - Infrastructure
+
+- name: Import Zabbix template Scheduler
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_scheduler.json') }}"
+    template_name: scheduler
+    template_groups:
+      - Scheduler
+
+- name: Import Zabbix template Scheduler Worker
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_scheduler_worker.json') }}"
+    template_name: Scheduler-Worker
+    template_groups:
+      - Scheduler
+
+- name: Import Zabbix template App Libvirt
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_app_libvirt.json') }}"
+    template_name: Template_App_libvirt
+    template_groups:
+      - KVM
+
+- name: Import Zabbix template App PostgreSQL
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_app_postgresql.json') }}"
+    template_name: Template App PostgreSQL
+    template_groups:
+      - PostgreSQL
+
+- name: Import Zabbix template App RabbitMQ
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_app_rabbitmq.json') }}"
+    template_name: Template App RabbitMQ v3
+    template_groups:
+      - Rabbit Servers

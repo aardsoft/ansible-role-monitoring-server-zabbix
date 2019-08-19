@@ -1,0 +1,20 @@
+<?php
+// Ansible managed!
+// Zabbix GUI configuration file.
+global $DB;
+
+$DB['TYPE']     = 'MYSQL';
+$DB['SERVER']   = '{{zabbix_server_db_host}}';
+$DB['PORT']     = '0';
+$DB['DATABASE'] = 'zabbix';
+$DB['USER']     = 'zabbix';
+$DB['PASSWORD'] = '{{lookup(passdb, zabbix_server_db_pass)}}';
+
+// Schema name. Used for IBM DB2 and PostgreSQL.
+$DB['SCHEMA'] = '';
+
+$ZBX_SERVER      = 'localhost';
+$ZBX_SERVER_PORT = '10051';
+$ZBX_SERVER_NAME = '{{zabbix_server_instance_name}}';
+
+$IMAGE_FORMAT_DEFAULT = IMAGE_FORMAT_PNG;

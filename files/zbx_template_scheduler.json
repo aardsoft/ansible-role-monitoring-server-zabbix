@@ -1,0 +1,1039 @@
+{
+  "zabbix_export": {
+    "version": "3.4",
+    "date": "2019-08-05T11:43:09Z",
+    "groups": [
+      {
+        "name": "Scheduler"
+      }
+    ],
+    "templates": [
+      {
+        "template": "scheduler",
+        "name": "Scheduler",
+        "description": "",
+        "groups": [
+          {
+            "name": "Scheduler"
+          }
+        ],
+        "applications": [
+          {
+            "name": "Scheduler"
+          }
+        ],
+        "items": [
+          {
+            "name": "Executions finished",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[executions,finished]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Executions running",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[executions,running]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Executions waiting",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[executions,waiting]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Tasks cancelled",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[tasks,cancelled]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Tasks crashed",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[tasks,crashed]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Tasks failed",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[tasks,failed]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Tasks finished",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[tasks,finished]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Tasks paused",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[tasks,paused]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Tasks started",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[tasks,started]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Tasks timeout",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[tasks,timeout]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Tasks transition",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[tasks,transition]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "Tasks waiting",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "scheduler[tasks,waiting]",
+            "delay": "60s",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "Scheduler"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          }
+        ],
+        "discovery_rules": [],
+        "httptests": [],
+        "macros": [],
+        "templates": [],
+        "screens": []
+      }
+    ],
+    "triggers": [
+      {
+        "expression": "{scheduler:scheduler[tasks,crashed].change()}>=5",
+        "recovery_mode": "1",
+        "recovery_expression": "{scheduler:scheduler[tasks,crashed].change()}=0",
+        "name": "5 or more crashed tasks in the last minute!",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "4",
+        "description": "",
+        "type": "0",
+        "manual_close": "1",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{scheduler:scheduler[executions,waiting].last()}>100",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "More than 100 executions in waiting state!",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "2",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{scheduler:scheduler[executions,waiting].last()}>200",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "More than 200 executions in waiting state!",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "4",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{scheduler:scheduler[executions,waiting].last()}>400",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "More than 400 executions in waiting state!",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "5",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{scheduler:scheduler[tasks,waiting].last()}>15000",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "More than 15000 tasks in waiting state!",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "1",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{scheduler:scheduler[tasks,waiting].last()}>20000",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "More than 20000 tasks in waiting state!",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "2",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{scheduler:scheduler[tasks,waiting].last()}>25000",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "More than 25000 tasks in waiting state!",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "5",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{scheduler:scheduler[tasks,failed].change()}>0",
+        "recovery_mode": "1",
+        "recovery_expression": "{scheduler:scheduler[tasks,failed].change()}=0",
+        "name": "New failed tasks",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "1",
+        "description": "",
+        "type": "0",
+        "manual_close": "1",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{scheduler:scheduler[tasks,paused].last()}>0",
+        "recovery_mode": "1",
+        "recovery_expression": "{scheduler:scheduler[tasks,paused].last()}=0",
+        "name": "Tasks in paused state!",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "2",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      }
+    ],
+    "graphs": [
+      {
+        "name": "Executions in Queue",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "0",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "1",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "0",
+            "color": "0050B0",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[executions,running]"
+            }
+          },
+          {
+            "sortorder": "1",
+            "drawtype": "0",
+            "color": "A0A0A0",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[executions,waiting]"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Tasks in progress",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "0",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "1",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "0",
+            "color": "1E6EB4",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,transition]"
+            }
+          },
+          {
+            "sortorder": "1",
+            "drawtype": "0",
+            "color": "0050B0",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,started]"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Tasks in queue",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "0",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "1",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "0",
+            "color": "A0A0A0",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,waiting]"
+            }
+          },
+          {
+            "sortorder": "1",
+            "drawtype": "0",
+            "color": "764954",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,paused]"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Tasks waiting",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "0",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "1",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "0",
+            "color": "A0A0A0",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,waiting]"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Total Executions finished",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "0",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "1",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "1",
+            "color": "1A7C11",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[executions,finished]"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Total Tasks cancelled",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "0",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "1",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "0",
+            "color": "90903E",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,cancelled]"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Total Tasks crashed/failed/timeout",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "1",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "1",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "0",
+            "color": "C89A00",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,timeout]"
+            }
+          },
+          {
+            "sortorder": "1",
+            "drawtype": "0",
+            "color": "DC3232",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,crashed]"
+            }
+          },
+          {
+            "sortorder": "2",
+            "drawtype": "0",
+            "color": "C87200",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,failed]"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Total Tasks ended",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "1",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "1",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "1",
+            "color": "3E903E",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,finished]"
+            }
+          },
+          {
+            "sortorder": "1",
+            "drawtype": "0",
+            "color": "90903E",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,cancelled]"
+            }
+          },
+          {
+            "sortorder": "2",
+            "drawtype": "0",
+            "color": "C89A00",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,timeout]"
+            }
+          },
+          {
+            "sortorder": "3",
+            "drawtype": "1",
+            "color": "C87200",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,failed]"
+            }
+          },
+          {
+            "sortorder": "4",
+            "drawtype": "1",
+            "color": "DC3232",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "scheduler",
+              "key": "scheduler[tasks,crashed]"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

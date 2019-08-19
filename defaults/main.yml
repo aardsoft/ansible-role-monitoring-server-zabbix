@@ -1,0 +1,12 @@
+---
+# defaults file for zabbix-server
+
+zabbix_server_admin_passwd: zabbix_admin
+zabbix_server_db_host: 127.0.0.1
+zabbix_server_db_pass: sql_mariadb_zabbix
+zabbix_server_instance_name: Zabbix
+zabbix_server_php_timezone: Europe/Helsinki
+zabbix_server_url: http://monitoring/zabbix/
+
+# Optional
+# zabbix_server_repo_proxy: http://proxy:8080

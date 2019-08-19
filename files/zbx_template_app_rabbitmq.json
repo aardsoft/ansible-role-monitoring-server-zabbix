@@ -1,0 +1,1638 @@
+{
+  "zabbix_export": {
+    "version": "3.4",
+    "date": "2019-08-05T11:56:06Z",
+    "groups": [
+      {
+        "name": "Rabbit Servers"
+      },
+      {
+        "name": "Templates"
+      }
+    ],
+    "templates": [
+      {
+        "template": "Template App RabbitMQ v3",
+        "name": "Template App RabbitMQ v3",
+        "description": "",
+        "groups": [
+          {
+            "name": "Rabbit Servers"
+          },
+          {
+            "name": "Templates"
+          }
+        ],
+        "applications": [
+          {
+            "name": "rabbitmq data"
+          },
+          {
+            "name": "rabbitmq server"
+          }
+        ],
+        "items": [
+          {
+            "name": "RabbitMQ Server File Desc Percent Used",
+            "type": "15",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq.server.filedesc.percentused",
+            "delay": "300",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "0",
+            "allowed_hosts": "",
+            "units": "%",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "last(\"rabbitmq[server,fd_used]\")/last(\"rabbitmq[server,fd_total]\")",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [
+              {
+                "type": "1",
+                "params": "100"
+              }
+            ],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server Memory Percent Used",
+            "type": "15",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq.server.mem.percentused",
+            "delay": "300",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "0",
+            "allowed_hosts": "",
+            "units": "%",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "last(\"rabbitmq[server,mem_used]\")/last(\"rabbitmq[server,mem_limit]\")",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [
+              {
+                "type": "1",
+                "params": "100"
+              }
+            ],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server Sockets Percent Used",
+            "type": "15",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq.server.sockets.percentused",
+            "delay": "300",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "0",
+            "allowed_hosts": "",
+            "units": "%",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "last(\"rabbitmq[server,sockets_used]\")/last(\"rabbitmq[server,sockets_total]\")",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [
+              {
+                "type": "1",
+                "params": "100"
+              }
+            ],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Check Aliveness",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[check_aliveness]",
+            "delay": "60",
+            "history": "90d",
+            "trends": "0",
+            "status": "0",
+            "value_type": "4",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Refresh Rabbit Queue Status",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[queues]",
+            "delay": "30",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server Disk Free",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,disk_free]",
+            "delay": "300",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "bytes",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server File Desc Limit",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,fd_total]",
+            "delay": "1800",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server File Desc Used",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,fd_used]",
+            "delay": "300",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server Memory Limit",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,mem_limit]",
+            "delay": "1800",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "bytes",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server Memory Used",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,mem_used]",
+            "delay": "300",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "bytes",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Messages Total Ready",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,message_count_ready]",
+            "delay": "30",
+            "history": "7d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "msgs",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "This is the total number of ready messages",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Messages Total Count",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,message_count_total]",
+            "delay": "30",
+            "history": "7d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "msgs",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "This is the total number of messages",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Messages Total Unacknowledged",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,message_count_unacknowledged]",
+            "delay": "30",
+            "history": "7d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "msgs",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "This is the total number of unacknowledged messages",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Message Deliver Rates",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,message_stats_deliver_get]",
+            "delay": "60",
+            "history": "7d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "0",
+            "allowed_hosts": "",
+            "units": "msgs/s",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [
+              {
+                "type": "10",
+                "params": ""
+              }
+            ],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Message Receive Rates",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,message_stats_publish]",
+            "delay": "60",
+            "history": "7d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "0",
+            "allowed_hosts": "",
+            "units": "msgs/s",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "This is the number of messages published TO the rabbit server",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [
+              {
+                "type": "10",
+                "params": ""
+              }
+            ],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server Partitions",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,partitions]",
+            "delay": "30",
+            "history": "90d",
+            "trends": "0",
+            "status": "0",
+            "value_type": "1",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "Server partitions - SHOULD be [] which is none, so if something shows up here, partition has occurred.",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server Version",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,rabbitmq_version]",
+            "delay": "3600",
+            "history": "90d",
+            "trends": "0",
+            "status": "0",
+            "value_type": "4",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "RabbitMQ Server Version",
+            "inventory_link": "18",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server Sockets Limit",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,sockets_total]",
+            "delay": "1800",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          },
+          {
+            "name": "RabbitMQ Server Sockets Used",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq[server,sockets_used]",
+            "delay": "300",
+            "history": "90d",
+            "trends": "365d",
+            "status": "0",
+            "value_type": "3",
+            "allowed_hosts": "",
+            "units": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "description": "",
+            "inventory_link": "0",
+            "applications": [
+              {
+                "name": "rabbitmq server"
+              }
+            ],
+            "valuemap": [],
+            "logtimefmt": "",
+            "preprocessing": [],
+            "jmx_endpoint": "",
+            "master_item": []
+          }
+        ],
+        "discovery_rules": [
+          {
+            "name": "rabbitmq queues",
+            "type": "7",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "rabbitmq.discovery_queues",
+            "delay": "360",
+            "status": "0",
+            "allowed_hosts": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "filter": {
+              "evaltype": "1",
+              "formula": "",
+              "conditions": [
+                {
+                  "macro": "{#QUEUENAME}",
+                  "value": "@Queues excluded from monitoring",
+                  "operator": "8",
+                  "formulaid": "A"
+                }
+              ]
+            },
+            "lifetime": "1d",
+            "description": "",
+            "item_prototypes": [
+              {
+                "name": "RabbitMQ  $2 on vhost $1, queue $3",
+                "type": "2",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "rabbitmq.queues[{#VHOSTNAME},queue_consumers,{#QUEUENAME}]",
+                "delay": "0",
+                "history": "7d",
+                "trends": "90d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "rabbitmq data"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "RabbitMQ  $2 on vhost $1, queue $3",
+                "type": "2",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "rabbitmq.queues[{#VHOSTNAME},queue_memory,{#QUEUENAME}]",
+                "delay": "0",
+                "history": "7d",
+                "trends": "90d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "B",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "rabbitmq data"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "RabbitMQ  $2 on vhost $1, queue $3",
+                "type": "2",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "rabbitmq.queues[{#VHOSTNAME},queue_messages,{#QUEUENAME}]",
+                "delay": "0",
+                "history": "7d",
+                "trends": "90d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "rabbitmq data"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "RabbitMQ  $2 on vhost $1, queue $3",
+                "type": "2",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "rabbitmq.queues[{#VHOSTNAME},queue_messages_unacknowledged,{#QUEUENAME}]",
+                "delay": "0",
+                "history": "7d",
+                "trends": "90d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "rabbitmq data"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "RabbitMQ $2 on vhost $1, queue $3",
+                "type": "2",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "rabbitmq.queues[{#VHOSTNAME},queue_message_stats_ack,{#QUEUENAME}]",
+                "delay": "0",
+                "history": "7d",
+                "trends": "365d",
+                "status": "0",
+                "value_type": "0",
+                "allowed_hosts": "",
+                "units": "msgs/s",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "Rate of message acknowledgement per queue",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "rabbitmq data"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [
+                  {
+                    "type": "10",
+                    "params": ""
+                  }
+                ],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "RabbitMQ $2 on vhost $1, queue $3",
+                "type": "2",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "rabbitmq.queues[{#VHOSTNAME},queue_message_stats_deliver_get,{#QUEUENAME}]",
+                "delay": "0",
+                "history": "7d",
+                "trends": "365d",
+                "status": "0",
+                "value_type": "0",
+                "allowed_hosts": "",
+                "units": "msgs/s",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "Rate of message delivery to a consumer per queue",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "rabbitmq data"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [
+                  {
+                    "type": "10",
+                    "params": ""
+                  }
+                ],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "RabbitMQ $2 on vhost $1, queue $3",
+                "type": "2",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "rabbitmq.queues[{#VHOSTNAME},queue_message_stats_publish,{#QUEUENAME}]",
+                "delay": "0",
+                "history": "7d",
+                "trends": "365d",
+                "status": "0",
+                "value_type": "0",
+                "allowed_hosts": "",
+                "units": "msgs/s",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "Rate of message delivery to a consumer per queue",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "rabbitmq data"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [
+                  {
+                    "type": "10",
+                    "params": ""
+                  }
+                ],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              }
+            ],
+            "trigger_prototypes": [
+              {
+                "expression": "{Template App RabbitMQ v3:rabbitmq.queues[{#VHOSTNAME},queue_consumers,{#QUEUENAME}].max(120)}=0 and {Template App RabbitMQ v3:rabbitmq.queues[{#VHOSTNAME},queue_messages,{#QUEUENAME}].max(120)}<>0",
+                "recovery_mode": "0",
+                "recovery_expression": "",
+                "name": "No queue consumer found and messages present on: {#VHOSTNAME}/{#QUEUENAME}",
+                "correlation_mode": "0",
+                "correlation_tag": "",
+                "url": "",
+                "status": "0",
+                "priority": "3",
+                "description": "",
+                "type": "0",
+                "manual_close": "0",
+                "dependencies": [],
+                "tags": []
+              },
+              {
+                "expression": "{Template App RabbitMQ v3:rabbitmq.queues[{#VHOSTNAME},queue_messages,{#QUEUENAME}].last(0)}>{$RABBIT_QUEUE_MESSAGES_CRIT}",
+                "recovery_mode": "0",
+                "recovery_expression": "",
+                "name": "{#NODENAME}/{#VHOSTNAME}/{#QUEUENAME} - CRITICAL",
+                "correlation_mode": "0",
+                "correlation_tag": "",
+                "url": "http://{#FQDN}:15672/#/queues/",
+                "status": "0",
+                "priority": "4",
+                "description": "",
+                "type": "0",
+                "manual_close": "0",
+                "dependencies": [],
+                "tags": []
+              },
+              {
+                "expression": "{Template App RabbitMQ v3:rabbitmq.queues[{#VHOSTNAME},queue_messages,{#QUEUENAME}].last(0)}>{$RABBIT_QUEUE_MESSAGES_WARN} and {Template App RabbitMQ v3:rabbitmq.queues[{#VHOSTNAME},queue_messages,{#QUEUENAME}].last(0)}<{$RABBIT_QUEUE_MESSAGES_CRIT}",
+                "recovery_mode": "0",
+                "recovery_expression": "",
+                "name": "{#NODENAME}/{#VHOSTNAME}/{#QUEUENAME} - Warning",
+                "correlation_mode": "0",
+                "correlation_tag": "",
+                "url": "http://{#FQDN}:15672/#/queues/",
+                "status": "0",
+                "priority": "2",
+                "description": "",
+                "type": "0",
+                "manual_close": "0",
+                "dependencies": [],
+                "tags": []
+              }
+            ],
+            "graph_prototypes": [
+              {
+                "name": "Message count on {#VHOSTNAME}/{#QUEUENAME}",
+                "width": "900",
+                "height": "200",
+                "yaxismin": "0.0000",
+                "yaxismax": "100.0000",
+                "show_work_period": "1",
+                "show_triggers": "1",
+                "type": "0",
+                "show_legend": "1",
+                "show_3d": "0",
+                "percent_left": "0.0000",
+                "percent_right": "0.0000",
+                "ymin_type_1": "0",
+                "ymax_type_1": "0",
+                "ymin_item_1": "0",
+                "ymax_item_1": "0",
+                "graph_items": [
+                  {
+                    "sortorder": "0",
+                    "drawtype": "2",
+                    "color": "00C800",
+                    "yaxisside": "0",
+                    "calc_fnc": "2",
+                    "type": "0",
+                    "item": {
+                      "host": "Template App RabbitMQ v3",
+                      "key": "rabbitmq.queues[{#VHOSTNAME},queue_messages,{#QUEUENAME}]"
+                    }
+                  },
+                  {
+                    "sortorder": "1",
+                    "drawtype": "2",
+                    "color": "C80000",
+                    "yaxisside": "0",
+                    "calc_fnc": "2",
+                    "type": "0",
+                    "item": {
+                      "host": "Template App RabbitMQ v3",
+                      "key": "rabbitmq.queues[{#VHOSTNAME},queue_messages_unacknowledged,{#QUEUENAME}]"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Message rates on {#VHOSTNAME}/{#QUEUENAME}",
+                "width": "900",
+                "height": "200",
+                "yaxismin": "0.0000",
+                "yaxismax": "100.0000",
+                "show_work_period": "1",
+                "show_triggers": "1",
+                "type": "0",
+                "show_legend": "1",
+                "show_3d": "0",
+                "percent_left": "0.0000",
+                "percent_right": "0.0000",
+                "ymin_type_1": "0",
+                "ymax_type_1": "0",
+                "ymin_item_1": "0",
+                "ymax_item_1": "0",
+                "graph_items": [
+                  {
+                    "sortorder": "0",
+                    "drawtype": "0",
+                    "color": "C80000",
+                    "yaxisside": "0",
+                    "calc_fnc": "2",
+                    "type": "0",
+                    "item": {
+                      "host": "Template App RabbitMQ v3",
+                      "key": "rabbitmq.queues[{#VHOSTNAME},queue_message_stats_deliver_get,{#QUEUENAME}]"
+                    }
+                  },
+                  {
+                    "sortorder": "1",
+                    "drawtype": "0",
+                    "color": "00C800",
+                    "yaxisside": "0",
+                    "calc_fnc": "2",
+                    "type": "0",
+                    "item": {
+                      "host": "Template App RabbitMQ v3",
+                      "key": "rabbitmq.queues[{#VHOSTNAME},queue_message_stats_publish,{#QUEUENAME}]"
+                    }
+                  },
+                  {
+                    "sortorder": "3",
+                    "drawtype": "0",
+                    "color": "0000C8",
+                    "yaxisside": "0",
+                    "calc_fnc": "2",
+                    "type": "0",
+                    "item": {
+                      "host": "Template App RabbitMQ v3",
+                      "key": "rabbitmq.queues[{#VHOSTNAME},queue_message_stats_ack,{#QUEUENAME}]"
+                    }
+                  }
+                ]
+              }
+            ],
+            "host_prototypes": [],
+            "jmx_endpoint": ""
+          }
+        ],
+        "httptests": [],
+        "macros": [
+          {
+            "macro": "{$RABBIT_QUEUE_MESSAGES_CRIT}",
+            "value": "200"
+          },
+          {
+            "macro": "{$RABBIT_QUEUE_MESSAGES_WARN}",
+            "value": "300"
+          }
+        ],
+        "templates": [],
+        "screens": []
+      }
+    ],
+    "triggers": [
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq[check_aliveness].str(ok)}=0",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "Dead Rabbit",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "4",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq.server.filedesc.percentused.last(0)}>50",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "Percent file descriptors greater than 50%",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "2",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [
+          {
+            "name": "Percent file descriptors greater than 75%",
+            "expression": "{Template App RabbitMQ v3:rabbitmq.server.filedesc.percentused.last(0)}>75",
+            "recovery_expression": ""
+          }
+        ],
+        "tags": []
+      },
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq.server.filedesc.percentused.last(0)}>75",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "Percent file descriptors greater than 75%",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "4",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq.server.mem.percentused.last(0)}>50",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "Percent memory use greater than 50%",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "2",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [
+          {
+            "name": "Percent memory use greater than 75%",
+            "expression": "{Template App RabbitMQ v3:rabbitmq.server.mem.percentused.last(0)}>75",
+            "recovery_expression": ""
+          }
+        ],
+        "tags": []
+      },
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq.server.mem.percentused.last(0)}>75",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "Percent memory use greater than 75%",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "4",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq.server.sockets.percentused.last(0)}>50",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "Percent sockets in use greater than 50%",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "2",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [
+          {
+            "name": "Percent sockets in use greater than 75%",
+            "expression": "{Template App RabbitMQ v3:rabbitmq.server.sockets.percentused.last(0)}>75",
+            "recovery_expression": ""
+          }
+        ],
+        "tags": []
+      },
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq.server.sockets.percentused.last(0)}>75",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "Percent sockets in use greater than 75%",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "4",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq[queues].last(0)}=1 or {Template App RabbitMQ v3:rabbitmq[queues].nodata(5m)}=1",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "Queue data status issue",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "3",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [
+          {
+            "name": "Dead Rabbit",
+            "expression": "{Template App RabbitMQ v3:rabbitmq[check_aliveness].str(ok)}=0",
+            "recovery_expression": ""
+          }
+        ],
+        "tags": []
+      },
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq[server,partitions].regexp(\\[\\]|^\\s*$)}=0",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "RabbitMQ Cluster partition detected",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "3",
+        "description": "RabbitMQ Cluster is in a BAD state!",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      },
+      {
+        "expression": "{Template App RabbitMQ v3:rabbitmq[server,rabbitmq_version].diff(0)}>0",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "name": "RabbitMQ server version has changed",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "url": "",
+        "status": "0",
+        "priority": "2",
+        "description": "",
+        "type": "0",
+        "manual_close": "0",
+        "dependencies": [],
+        "tags": []
+      }
+    ],
+    "graphs": [
+      {
+        "name": "Rabbit Server Overall Message Count",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "0",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "0",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "0",
+            "color": "00C800",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "Template App RabbitMQ v3",
+              "key": "rabbitmq[server,message_count_ready]"
+            }
+          },
+          {
+            "sortorder": "1",
+            "drawtype": "0",
+            "color": "C80000",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "Template App RabbitMQ v3",
+              "key": "rabbitmq[server,message_count_unacknowledged]"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Rabbit Server Overall Message Rates",
+        "width": "900",
+        "height": "200",
+        "yaxismin": "0.0000",
+        "yaxismax": "100.0000",
+        "show_work_period": "1",
+        "show_triggers": "1",
+        "type": "0",
+        "show_legend": "1",
+        "show_3d": "0",
+        "percent_left": "0.0000",
+        "percent_right": "0.0000",
+        "ymin_type_1": "0",
+        "ymax_type_1": "0",
+        "ymin_item_1": "0",
+        "ymax_item_1": "0",
+        "graph_items": [
+          {
+            "sortorder": "0",
+            "drawtype": "0",
+            "color": "C80000",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "Template App RabbitMQ v3",
+              "key": "rabbitmq[server,message_stats_deliver_get]"
+            }
+          },
+          {
+            "sortorder": "1",
+            "drawtype": "0",
+            "color": "00C800",
+            "yaxisside": "0",
+            "calc_fnc": "2",
+            "type": "0",
+            "item": {
+              "host": "Template App RabbitMQ v3",
+              "key": "rabbitmq[server,message_stats_publish]"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

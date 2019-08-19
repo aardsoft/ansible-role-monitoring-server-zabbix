@@ -1,0 +1,617 @@
+{
+  "zabbix_export": {
+    "version": "3.4",
+    "date": "2019-08-05T11:50:25Z",
+    "groups": [
+      {
+        "name": "KVM"
+      }
+    ],
+    "templates": [
+      {
+        "template": "Template_App_libvirt",
+        "name": "Template App libvirt",
+        "description": "",
+        "groups": [
+          {
+            "name": "KVM"
+          }
+        ],
+        "applications": [
+          {
+            "name": "KVM Domains"
+          },
+          {
+            "name": "KVM Networks"
+          },
+          {
+            "name": "KVM Pools"
+          },
+          {
+            "name": "KVM Volumes"
+          }
+        ],
+        "items": [],
+        "discovery_rules": [
+          {
+            "name": "KVM Domain discovery",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "custom.kvm.domain.discover",
+            "delay": "3600",
+            "status": "0",
+            "allowed_hosts": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "filter": {
+              "evaltype": "0",
+              "formula": "",
+              "conditions": [
+                {
+                  "macro": "{#DOMAINNAME}",
+                  "value": ".*",
+                  "operator": "8",
+                  "formulaid": "A"
+                }
+              ]
+            },
+            "lifetime": "30d",
+            "description": "",
+            "item_prototypes": [
+              {
+                "name": "Domain $1 active",
+                "type": "0",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "custom.kvm.domain.active[{#DOMAINNAME}]",
+                "delay": "60",
+                "history": "90d",
+                "trends": "365d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "Is the domain running or not\r\n0 - No\r\n1 - Yes",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "KVM Domains"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [
+                  {
+                    "type": "6",
+                    "params": ""
+                  }
+                ],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "UUID of Domain $1",
+                "type": "0",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "custom.kvm.domain.uuid[{#DOMAINNAME}]",
+                "delay": "86400",
+                "history": "90d",
+                "trends": "0",
+                "status": "0",
+                "value_type": "4",
+                "allowed_hosts": "",
+                "units": "",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "KVM Domains"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              }
+            ],
+            "trigger_prototypes": [],
+            "graph_prototypes": [],
+            "host_prototypes": [],
+            "jmx_endpoint": ""
+          },
+          {
+            "name": "KVM Network discovery",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "custom.kvm.net.discover",
+            "delay": "3600",
+            "status": "0",
+            "allowed_hosts": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "filter": {
+              "evaltype": "0",
+              "formula": "",
+              "conditions": [
+                {
+                  "macro": "{#NETNAME}",
+                  "value": ".*",
+                  "operator": "8",
+                  "formulaid": "A"
+                }
+              ]
+            },
+            "lifetime": "30d",
+            "description": "",
+            "item_prototypes": [
+              {
+                "name": "Network $1 active",
+                "type": "0",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "custom.kvm.net.active[{#NETNAME}]",
+                "delay": "60",
+                "history": "7d",
+                "trends": "365d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "Is the network up or not\r\n0 - No\r\n1 - Yes",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "KVM Networks"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [
+                  {
+                    "type": "6",
+                    "params": ""
+                  }
+                ],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "UUID of Network $1",
+                "type": "0",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "custom.kvm.pool.uuid[{#NETNAME}]",
+                "delay": "86400",
+                "history": "90d",
+                "trends": "0",
+                "status": "0",
+                "value_type": "4",
+                "allowed_hosts": "",
+                "units": "",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "Get the UUID of the Network",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "KVM Networks"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              }
+            ],
+            "trigger_prototypes": [],
+            "graph_prototypes": [],
+            "host_prototypes": [],
+            "jmx_endpoint": ""
+          },
+          {
+            "name": "KVM Pool discovery",
+            "type": "0",
+            "snmp_community": "",
+            "snmp_oid": "",
+            "key": "custom.kvm.pool.discover",
+            "delay": "3600",
+            "status": "0",
+            "allowed_hosts": "",
+            "snmpv3_contextname": "",
+            "snmpv3_securityname": "",
+            "snmpv3_securitylevel": "0",
+            "snmpv3_authprotocol": "0",
+            "snmpv3_authpassphrase": "",
+            "snmpv3_privprotocol": "0",
+            "snmpv3_privpassphrase": "",
+            "params": "",
+            "ipmi_sensor": "",
+            "authtype": "0",
+            "username": "",
+            "password": "",
+            "publickey": "",
+            "privatekey": "",
+            "port": "",
+            "filter": {
+              "evaltype": "0",
+              "formula": "",
+              "conditions": [
+                {
+                  "macro": "{#POOLNAME}",
+                  "value": ".*",
+                  "operator": "8",
+                  "formulaid": "A"
+                }
+              ]
+            },
+            "lifetime": "30d",
+            "description": "discovery of KVM pools",
+            "item_prototypes": [
+              {
+                "name": "Pool {#POOLNAME} active",
+                "type": "0",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "custom.kvm.pool.active[{#POOLNAME}]",
+                "delay": "60",
+                "history": "7d",
+                "trends": "365d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "KVM Pools"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [
+                  {
+                    "type": "6",
+                    "params": ""
+                  }
+                ],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "Pool free size of {#POOLNAME}",
+                "type": "0",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "custom.kvm.pool.size[free,{#POOLNAME}]",
+                "delay": "3600",
+                "history": "7d",
+                "trends": "365d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "B",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "KVM Pools"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "Pool total size of {#POOLNAME}",
+                "type": "0",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "custom.kvm.pool.size[total,{#POOLNAME}]",
+                "delay": "3600",
+                "history": "7d",
+                "trends": "365d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "B",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "KVM Pools"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "Pool used size of {#POOLNAME}",
+                "type": "0",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "custom.kvm.pool.size[used,{#POOLNAME}]",
+                "delay": "3600",
+                "history": "7d",
+                "trends": "365d",
+                "status": "0",
+                "value_type": "3",
+                "allowed_hosts": "",
+                "units": "B",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "KVM Pools"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              },
+              {
+                "name": "UUID of pool {#POOLNAME}",
+                "type": "0",
+                "snmp_community": "",
+                "snmp_oid": "",
+                "key": "custom.kvm.pool.uuid[{#POOLNAME}]",
+                "delay": "86400",
+                "history": "90d",
+                "trends": "0",
+                "status": "0",
+                "value_type": "4",
+                "allowed_hosts": "",
+                "units": "",
+                "snmpv3_contextname": "",
+                "snmpv3_securityname": "",
+                "snmpv3_securitylevel": "0",
+                "snmpv3_authprotocol": "0",
+                "snmpv3_authpassphrase": "",
+                "snmpv3_privprotocol": "0",
+                "snmpv3_privpassphrase": "",
+                "params": "",
+                "ipmi_sensor": "",
+                "authtype": "0",
+                "username": "",
+                "password": "",
+                "publickey": "",
+                "privatekey": "",
+                "port": "",
+                "description": "Get the UUID of the Pool",
+                "inventory_link": "0",
+                "applications": [
+                  {
+                    "name": "KVM Pools"
+                  }
+                ],
+                "valuemap": [],
+                "logtimefmt": "",
+                "preprocessing": [],
+                "jmx_endpoint": "",
+                "application_prototypes": [],
+                "master_item_prototype": []
+              }
+            ],
+            "trigger_prototypes": [],
+            "graph_prototypes": [
+              {
+                "name": "Pool space usage {#POOLNAME}",
+                "width": "900",
+                "height": "200",
+                "yaxismin": "0.0000",
+                "yaxismax": "100.0000",
+                "show_work_period": "0",
+                "show_triggers": "0",
+                "type": "1",
+                "show_legend": "1",
+                "show_3d": "0",
+                "percent_left": "0.0000",
+                "percent_right": "0.0000",
+                "ymin_type_1": "0",
+                "ymax_type_1": "0",
+                "ymin_item_1": "0",
+                "ymax_item_1": "0",
+                "graph_items": [
+                  {
+                    "sortorder": "0",
+                    "drawtype": "0",
+                    "color": "CC0000",
+                    "yaxisside": "0",
+                    "calc_fnc": "2",
+                    "type": "0",
+                    "item": {
+                      "host": "Template_App_libvirt",
+                      "key": "custom.kvm.pool.size[used,{#POOLNAME}]"
+                    }
+                  },
+                  {
+                    "sortorder": "1",
+                    "drawtype": "0",
+                    "color": "00C800",
+                    "yaxisside": "0",
+                    "calc_fnc": "2",
+                    "type": "0",
+                    "item": {
+                      "host": "Template_App_libvirt",
+                      "key": "custom.kvm.pool.size[free,{#POOLNAME}]"
+                    }
+                  }
+                ]
+              }
+            ],
+            "host_prototypes": [],
+            "jmx_endpoint": ""
+          }
+        ],
+        "httptests": [],
+        "macros": [],
+        "templates": [],
+        "screens": []
+      }
+    ]
+  }
+}
