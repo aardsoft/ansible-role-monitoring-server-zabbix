@@ -15,7 +15,6 @@
 
 - name: Install Zabbix repo RPM
   command: bash -c 'rpm -iv /tmp/zabbix-release-3.4-2.el7.noarch.rpm; rm -f /tmp/zabbix-release-3.4-2.el7.noarch.rpm'
-  command_warnings: False
   args:
     creates: /etc/yum.repos.d/zabbix.repo
 
@@ -24,15 +23,15 @@
     path: /etc/yum.repos.d/zabbix.repo
     state: present
     line: "proxy={{zabbix_server_repo_proxy}}"
-    insertafter: '^\[zabbix\]'
+    insertafter: '^baseurl=http://repo.zabbix.com/zabbix/.*'
   when: zabbix_server_repo_proxy is defined
 
 - name: Configure repo proxy (zabbix-non-supported)
   lineinfile:
     path: /etc/yum.repos.d/zabbix.repo
     state: present
-    line: "proxy={{zabbix_server_repo_proxy}}"
-    insertafter: '^\[zabbix-non-supported\]'
+    line: "proxy = {{zabbix_server_repo_proxy}}"
+    insertafter: '^baseurl=http://repo.zabbix.com/non-supported/.*'
   when: zabbix_server_repo_proxy is defined
 
 - name: Install Zabbix
