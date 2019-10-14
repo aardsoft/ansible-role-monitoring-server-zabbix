@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export https_proxy='http://http-proxy-2.em.health.ge.com:9400'
+export https_proxy='http://http-proxy-2.em.health.ge.com:80'
 
 flow_token="$1"
 #flow_token='42e95e5a31e2b017f686da04287d777f'

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export https_proxy='http://http-proxy-2.em.health.ge.com:9400'
+export https_proxy='http://http-proxy-2.em.health.ge.com:80'
 # Slack incoming web-hook URL and user name
 #url=' https://hooks.slack.com/services/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' # example: https://hooks.slack.com/services/QW3R7Y/D34DC0D3/BCADFGabcDEF123
 url='https://hooks.slack.com/services/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' # example: https://hooks.slack.com/services/QW3R7Y/D34DC0D3/BCADFGabcDEF123
