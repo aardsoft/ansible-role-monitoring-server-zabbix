@@ -99,7 +99,13 @@
   service: name=httpd enabled=yes state=restarted daemon_reload=yes
 
 - name: Open the Firewalld port 80/tcp on Zabbix
-  firewalld: port=80/tcp permanent=true state=enabled
+  firewalld: service=http permanent=yes state=enabled immediate=yes zone=internal
+
+- name: Open the Firewalld port 10050/tcp on Zabbix
+  firewalld: port=10050/tcp permanent=yes state=enabled immediate=yes zone=internal
+
+- name: Open the Firewalld port 10051/tcp on Zabbix
+  firewalld: port=10051/tcp permanent=yes state=enabled immediate=yes zone=internal
 
 - name: Install flowdock.sh
   copy:
