@@ -11,7 +11,9 @@ use Data::Dumper;
  
 # Authenticate yourself
 my $client = new JSON::RPC::Legacy::Client;
-my $url = 'http://3.187.7.36/zabbix/zabbix/api_jsonrpc.php';
+$client->ua->env_proxy;
+
+my $url = 'http://monitoring.wm-build.health.ge.com/zabbix/api_jsonrpc.php';
 my $authID;
 my $response;
 
