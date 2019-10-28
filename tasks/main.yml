@@ -228,3 +228,15 @@
     template_name: Template App RabbitMQ v3
     template_groups:
       - Rabbit Servers
+
+- name: Import Zabbix template Linux filesystems
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_Linux_filesystems.json') }}"
+    template_name: Template Module Linux filesystems by Zabbix agent
+    template_groups:
+      - Templates/Modules
