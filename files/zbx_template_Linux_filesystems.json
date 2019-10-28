@@ -1,7 +1,7 @@
 {
   "zabbix_export": {
     "version": "4.4",
-    "date": "2019-10-28T10:57:38Z",
+    "date": "2019-10-28T14:09:53Z",
     "groups": [
       {
         "name": "Templates/Modules"

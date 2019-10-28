@@ -240,3 +240,27 @@
     template_name: Template Module Linux filesystems by Zabbix agent
     template_groups:
       - Templates/Modules
+
+- name: Import Zabbix template Linux block devices
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_Linux_block_devices.json') }}"
+    template_name: Template Module Linux block devices by Zabbix agent
+    template_groups:
+      - Templates/Modules
+
+- name: Import Zabbix template Linux network interfaces
+  become: no
+  local_action:
+    module: zabbix_template
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    server_url: "{{zabbix_server_url}}"
+    template_json: "{{ lookup('file', 'zbx_template_Linux_network_interfaces.json') }}"
+    template_name: Template Module Linux network interfaces by Zabbix agent
+    template_groups:
+      - Templates/Modules
