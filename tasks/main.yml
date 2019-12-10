@@ -36,15 +36,9 @@
 
 - name: Install Zabbix
   yum:
-    name: "{{ item }}"
+    name: ['zabbix-server-mysql', 'zabbix-web-mysql', 'zabbix-get', 'zabbix-sender', 'mariadb']
     state: present
   when: ansible_os_family == "RedHat" and ansible_pkg_mgr == "yum"
-  with_items:
-    - zabbix-server-mysql
-    - zabbix-web-mysql
-    - zabbix-get
-    - zabbix-sender
-    - mariadb
 
 - name: Check MySQL DB
   command: bash -c "mysql -uzabbix -p{{lookup(passdb, zabbix_server_db_pass)}} -h {{zabbix_server_db_host}} -e 'select * from users;' zabbix"
