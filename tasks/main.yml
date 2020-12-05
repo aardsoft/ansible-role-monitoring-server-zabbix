@@ -73,6 +73,14 @@
     line: "DBPassword={{lookup(passdb, zabbix_server_db_pass)}}"
     insertafter: '^# DBPassword='
 
+- name: Configure Zabbix Server CacheSize
+  lineinfile:
+    path: /etc/zabbix/zabbix_server.conf
+    regexp: '^CacheSize='
+    state: present
+    line: "CacheSize={{zabbix_server_cache_size|default(128M)}}"
+    insertafter: '^# CacheSize=8M'
+
 - name: enable and start Zabbix Server
   service: name=zabbix-server enabled=yes state=restarted daemon_reload=yes
 
