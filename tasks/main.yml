@@ -78,7 +78,7 @@
     path: /etc/zabbix/zabbix_server.conf
     regexp: '^CacheSize='
     state: present
-    line: "CacheSize={{zabbix_server_cache_size|default(128M)}}"
+    line: "CacheSize={{zabbix_server_cache_size|default('128M')}}"
     insertafter: '^# CacheSize=8M'
 
 - name: enable and start Zabbix Server
