@@ -1,0 +1,4 @@
+- name: restart httpd
+  service:
+    name: "{{zabbix_http_service}}"
+    state: restarted

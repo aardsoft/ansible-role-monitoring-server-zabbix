@@ -4,7 +4,7 @@
     "date": "2019-08-05T08:45:50Z",
     "groups": [
       {
-        "name": "HP DL380 G9"
+        "name": "HP Servers"
       }
     ],
     "templates": [
@@ -14,7 +14,7 @@
         "description": "",
         "groups": [
           {
-            "name": "HP DL380 G9"
+            "name": "HP Servers"
           }
         ],
         "applications": [

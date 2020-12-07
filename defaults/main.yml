@@ -8,5 +8,105 @@ zabbix_server_instance_name: Zabbix
 zabbix_server_php_timezone: Europe/Helsinki
 zabbix_server_url: http://monitoring/zabbix/
 
+zabbix_service: zabbix-server
+zabbix_http_service: httpd
+zabbix_pkg_prefix: zabbix
+zabbix_backend: mysql
+zabbix_datadir: /usr/lib/zabbix
+zabbix_php_conf_dir: /etc/zabbix/web
+zabbix_http_template: http_zabbix_centos_7.j2
+zabbix_http_user: apache
+
+zabbix_default_alertscripts:
+  slack.sh:
+  flowdock.sh:
+  rut-sms-notify.sh:
+
+zabbix_default_externalscripts:
+  ipmi_sensor_discovery:
+    src: ipmi-sensor-discovery.sh
+
+zabbix_default_hostgroups:
+  - HP Servers
+  - Infrastructure
+  - Scheduler
+  - Slack Alarm
+  - Rabbit Servers
+  - PostgreSQL
+  - Virtualization
+
+zabbix_default_templates:
+  linux_network_interfaces:
+    src: zbx_template_Linux_network_interfaces.json
+    type: json
+    url: ""
+    description: Template Module Linux network interfaces by Zabbix agent
+    groups:
+      - Templates/Modules
+  linux_block_devices:
+    src: zbx_template_Linux_block_devices.json
+    type: json
+    url: ""
+    description: Template Module Linux block devices by Zabbix agent
+    groups:
+      - Templates/Modules
+  linux_filesystem:
+    src: zbx_template_Linux_filesystems.json
+    type: json
+    url: ""
+    description: Template Module Linux filesystems by Zabbix agent
+    groups:
+      - Templates/Modules
+  hp_dl380_g9:
+    src: zbx_template_impi_hp_dl380_g9.json
+    type: json
+    url: ""
+    description: IPMI HP DL380 G9
+    groups:
+      - HP Servers
+#  app_postgresql:
+#    src: zbx_template_app_postgresql.json
+#    type: json
+#    url: ""
+#    description: Template App PostgreSQL
+#    groups:
+#      - PostgreSQL
+  app_rabbitmq:
+    src: zbx_template_app_rabbitmq.json
+    type: json
+    url: ""
+    description: Template App RabbitMQ v3
+    groups:
+      - Rabbit Servers
+#  app_libvirt:
+#    src: zbx_template_app_libvirt.json
+#    type: json
+#    url: ""
+#    description: Template App Libvirt
+#    state: absent
+#    groups:
+#      - Virtualization
+  scheduler:
+    src: zbx_template_scheduler.json
+    type: json
+    url: ""
+    description: Scheduler template
+    groups:
+      - Scheduler
+  scheduler_worker:
+    src: zbx_template_scheduler_worker.json
+    type: json
+    url: ""
+    description: Scheduler worker template
+    groups:
+      - Scheduler
+  ups_eaton_9130:
+    src: zbx_template_eaton_9130.json
+    type: json
+    url: ""
+    description: Template for Eaton 9130
+    groups:
+      - Infrastructure
+
 # Optional
 # zabbix_server_repo_proxy: http://proxy:8080

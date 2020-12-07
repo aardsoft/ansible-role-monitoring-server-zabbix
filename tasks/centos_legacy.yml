@@ -1,0 +1,31 @@
+- stat: path=/etc/yum.repos.d/zabbix.repo
+  register: zabbix_repo
+
+- name: Copy Zabbix repo RPM
+  copy:
+    dest: /tmp/zabbix-release-4.4-1.el7.noarch.rpm
+    owner: root
+    mode: 0644
+    src: zabbix-release-4.4-1.el7.noarch.rpm
+  when: zabbix_repo.stat.exists == False
+
+- name: Install Zabbix repo RPM
+  command: bash -c 'rpm -iv /tmp/zabbix-release-4.4-1.el7.noarch.rpm; rm -f /tmp/zabbix-release-4.4-1.el7.noarch.rpm'
+  args:
+    creates: /etc/yum.repos.d/zabbix.repo
+
+- name: Configure repo proxy (zabbix)
+  lineinfile:
+    path: /etc/yum.repos.d/zabbix.repo
+    state: present
+    line: "proxy={{zabbix_server_repo_proxy}}"
+    insertafter: '^baseurl=http://repo.zabbix.com/zabbix/.*asearch/$'
+  when: zabbix_server_repo_proxy is defined
+
+- name: Configure repo proxy (zabbix-non-supported)
+  lineinfile:
+    path: /etc/yum.repos.d/zabbix.repo
+    state: present
+    line: "proxy = {{zabbix_server_repo_proxy}}"
+    insertafter: '^baseurl=http://repo.zabbix.com/non-supported/.*'
+  when: zabbix_server_repo_proxy is defined
