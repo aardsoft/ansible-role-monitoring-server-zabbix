@@ -7,20 +7,10 @@ pass="$3"
 number="$4"
 subject="$5"
 message="$6"
-host_name="$7"
-event_id="$8"
-trigger_id="$9"
-trigger_name="$10"
 
 m="$subject
-.
 
-$message
-
-Host: $host_name
-Event ID: $event_id
-Trigger ID: $trigger_id
-Trigger name: $trigger_name"
+$message"
 
 curl -G -X GET \
      --data-urlencode "username=$user" \
