@@ -36,6 +36,10 @@
   when: >
     ansible_os_family == "Suse"
 
+- include_role:
+    name: basic-host
+    tasks_from: install_packages
+
 # a2enflag ZABBIX
 # a2enmod php7
 
