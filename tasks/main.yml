@@ -28,20 +28,30 @@
     zabbix_http_user: wwwrun
     role_packages:
       - "{{zabbix_pkg_prefix}}-server-{{zabbix_backend}}"
-      - "{{zabbix_pkg_prefix}}-phpfrontend"
       - apache2
       - apache2-mod_php7
       - mariadb-client
       - php7-mysql
+      - php7-json
   when: >
     ansible_os_family == "Suse"
+
+- set_fact:
+    role_packages: "{{ role_packages }} + [ '{{zabbix_pkg_prefix}}-phpfrontend' ]"
+  when: >
+    ansible_os_family == "Suse" and
+    zabbix_pkg_prefix != "zabbix50"
+
+- set_fact:
+    role_packages: "{{ role_packages }} + [ '{{zabbix_pkg_prefix}}-ui' ]"
+    zabbix_php_conf_dir: /etc/zabbix/web
+  when: >
+    ansible_os_family == "Suse" and
+    zabbix_pkg_prefix == "zabbix50"
 
 - include_role:
     name: basic-host
     tasks_from: install_packages
-
-# a2enflag ZABBIX
-# a2enmod php7
 
 - name: Check MySQL DB
   command: bash -c "mysql -uzabbix -p{{lookup(passdb, zabbix_server_db_pass)}} -h {{zabbix_server_db_host}} -e 'select * from users;' zabbix"
@@ -120,6 +130,20 @@
     dest: "{{zabbix_php_conf_dir}}/zabbix.conf.php"
     mode: 0600
     owner: "{{zabbix_http_user}}"
+  notify:
+    - restart httpd
+
+- name: enable php7 module
+  apache2_module:
+    state: present
+    name: php7
+  notify:
+    - restart httpd
+
+- name: enable zabbix in Apache
+  shell: a2enflag zabbix
+  register: _a2enflag_result
+  changed_when: _a2enflag_result.stdout == ''
   notify:
     - restart httpd
 
