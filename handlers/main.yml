@@ -2,3 +2,8 @@
   service:
     name: "{{zabbix_http_service}}"
     state: restarted
+
+- name: restart zabbix
+  service:
+    name: zabbix_server
+    state: restarted
