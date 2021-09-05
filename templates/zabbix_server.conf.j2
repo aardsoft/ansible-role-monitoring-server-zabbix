@@ -1,5 +1,11 @@
+#jinja2: lstrip_blocks: True
+# {{ ansible_managed }}
 # This is a configuration file for Zabbix server daemon
 # To get more information about Zabbix, visit http://www.zabbix.com
+
+{% if zabbix_server is undefined %}
+{% set zabbix_server = {} %}
+{% endif %}
 
 ############ GENERAL PARAMETERS #################
 
@@ -27,6 +33,7 @@
 # Mandatory: no
 # Default:
 # LogType=file
+LogType={{zabbix_server.log_type|default('console')}}
 
 ### Option: LogFile
 #	Log file name for LogType 'file' parameter.
@@ -35,7 +42,9 @@
 # Default:
 # LogFile=
 
-LogFile=/var/log/zabbixs/zabbix_server.log
+{% if zabbix_server.log_type is defined and zabbix_server.log_type == 'file' %}
+LogFile={{zabbix_server.log_file|default('/var/log/zabbixs/zabbix_server.log')}}
+{% endif %}
 
 ### Option: LogFileSize
 #	Maximum size of log file in MB.
@@ -83,6 +92,7 @@ SocketDir=/run/zabbixs
 # Mandatory: no
 # Default:
 # DBHost=localhost
+DBHost={{zabbix_server.db.host|default('localhost')}}
 
 ### Option: DBName
 #	Database name.
@@ -91,7 +101,7 @@ SocketDir=/run/zabbixs
 # Default:
 # DBName=
 
-DBName=zabbix
+DBName={{zabbix_server.db.name|default('zabbix')}}
 
 ### Option: DBSchema
 #	Schema name. Used for IBM DB2 and PostgreSQL.
@@ -107,7 +117,7 @@ DBName=zabbix
 # Default:
 # DBUser=
 
-DBUser=zabbix
+DBUser={{zabbix_server.db.user|default('zabbix')}}
 
 ### Option: DBPassword
 #	Database password.
@@ -115,7 +125,11 @@ DBUser=zabbix
 #
 # Mandatory: no
 # Default:
+{% if zabbix_server.db.passdb_entry is defined %}
+DBPassword={{lookup(passdb, zabbix_server.db.passdb_entry)}}
+{% else %}
 DBPassword=zabbix
+{% endif %}
 
 ### Option: DBSocket
 #	Path to MySQL socket.
@@ -180,7 +194,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 0-1000
 # Default:
-# StartPollers=5
+StartPollers={{zabbix_server.start.pollers|default(5)}}
 
 ### Option: StartIPMIPollers
 #	Number of pre-forked instances of IPMI pollers.
@@ -189,7 +203,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 0-1000
 # Default:
-# StartIPMIPollers=0
+StartIPMIPollers={{zabbix_server.start.ipmi_pollers|default(1)}}
 
 ### Option: StartPreprocessors
 #	Number of pre-forked instances of preprocessing workers.
@@ -198,7 +212,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 1-1000
 # Default:
-# StartPreprocessors=3
+StartPreprocessors={{zabbix_server.start.preprocessors|default(3)}}
 
 ### Option: StartPollersUnreachable
 #	Number of pre-forked instances of pollers for unreachable hosts (including IPMI and Java).
@@ -208,7 +222,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 0-1000
 # Default:
-# StartPollersUnreachable=1
+StartPollersUnreachable={{zabbix_server.start.pollers_unreachable|default(1)}}
 
 ### Option: StartTrappers
 #	Number of pre-forked instances of trappers.
@@ -219,7 +233,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 0-1000
 # Default:
-# StartTrappers=5
+StartTrappers={{zabbix_server.start.trappers|default(5)}}
 
 ### Option: StartPingers
 #	Number of pre-forked instances of ICMP pingers.
@@ -227,7 +241,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 0-1000
 # Default:
-# StartPingers=1
+StartPingers={{zabbix_server.start.pingers|default(10)}}
 
 ### Option: StartDiscoverers
 #	Number of pre-forked instances of discoverers.
@@ -235,7 +249,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 0-250
 # Default:
-# StartDiscoverers=1
+StartDiscoverers={{zabbix_server.start.discoverers|default(1)}}
 
 ### Option: StartHTTPPollers
 #	Number of pre-forked instances of HTTP pollers.
@@ -243,7 +257,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 0-1000
 # Default:
-# StartHTTPPollers=1
+StartHTTPPollers={{zabbix_server.start.http_pollers|default(1)}}
 
 ### Option: StartTimers
 #	Number of pre-forked instances of timers.
@@ -254,7 +268,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 1-1000
 # Default:
-# StartTimers=1
+ StartTimers={{zabbix_server.start.timers|default(1)}}
 
 ### Option: StartEscalators
 #	Number of pre-forked instances of escalators.
@@ -262,7 +276,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 0-100
 # Default:
-# StartEscalators=1
+StartEscalators={{zabbix_server.start.escalators|default(1)}}
 
 ### Option: StartAlerters
 #	Number of pre-forked instances of alerters.
@@ -271,7 +285,7 @@ DBPassword=zabbix
 # Mandatory: no
 # Range: 0-100
 # Default:
-# StartAlerters=3
+StartAlerters={{zabbix_server.start.alerters|default(5)}}
 
 ### Option: JavaGateway
 #	IP address (or hostname) of Zabbix Java gateway.
@@ -400,6 +414,7 @@ DBPassword=zabbix
 # Range: 128K-64G
 # Default:
 # CacheSize=8M
+CacheSize={{zabbix_server.cache_size|default('128M')}}
 
 ### Option: CacheUpdateFrequency
 #	How often Zabbix will perform update of configuration cache, in seconds.

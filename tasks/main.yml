@@ -78,37 +78,17 @@
     result_mysql_check is failed and
     ansible_os_family == "Suse"
 
-- name: Configure Zabbix Server Ansible-Info
-  lineinfile:
-    path: /etc/zabbix/zabbix_server.conf
-    state: present
-    line: '# Partly managed by Ansible!'
-    insertbefore: BOF
+- name: Configure Zabbix Server
+  template:
+    src: zabbix_server.conf.j2
+    dest: /etc/zabbix/zabbix_server.conf
+    owner: root
+    group: zabbixs
+    mode: u=rw,g=r,o=
+  notify:
+    - restart zabbix
 
-- name: Configure Zabbix Server DBHost
-  lineinfile:
-    path: /etc/zabbix/zabbix_server.conf
-    regexp: '^DBHost='
-    state: present
-    line: "DBHost={{zabbix_server_db_host}}"
-    insertafter: '^# DBHost=localhost'
-
-- name: Configure Zabbix Server DBPassword
-  lineinfile:
-    path: /etc/zabbix/zabbix_server.conf
-    regexp: '^DBPassword='
-    state: present
-    line: "DBPassword={{lookup(passdb, zabbix_server_db_pass)}}"
-    insertafter: '^# DBPassword='
-
-- name: Configure Zabbix Server CacheSize
-  lineinfile:
-    path: /etc/zabbix/zabbix_server.conf
-    regexp: '^CacheSize='
-    state: present
-    line: "CacheSize={{zabbix_server_cache_size|default('128M')}}"
-    insertafter: '^# CacheSize=8M'
-
+# TODO: only restart here if needed
 - name: enable and start Zabbix Server
   service:
     name: "{{zabbix_service}}"
