@@ -30,7 +30,7 @@ zabbix_default_hostgroups:
   - HP Servers
   - Infrastructure
   - Scheduler
-  - Slack Alarm
+  - External Alarm
   - Rabbit Servers
   - PostgreSQL
   - Virtualization
