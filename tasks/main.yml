@@ -36,6 +36,30 @@
   when: >
     ansible_os_family == "Suse"
 
+# for ubuntu/debian this role expects upstream packages to be used. Add
+# something like
+# bootstrap_debs:
+#  - https://repo.zabbix.com/zabbix/5.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.0-1+focal_all.deb
+# to your variables
+- set_fact:
+    zabbix_http_service: apache2
+    zabbix_service: zabbix-server
+    zabbix_datadir: /usr/lib/zabbix
+    zabbix_php_conf_dir: /usr/share/zabbix/conf
+    zabbix_http_template: http_zabbix_suse.j2
+    zabbix_http_user: www-data
+    zabbix_php: php7.4
+    role_packages:
+      - "{{zabbix_pkg_prefix}}-server-{{zabbix_backend}}"
+      - zabbix-frontend-php
+      - zabbix-apache-conf
+      - apache2
+      - libapache2-mod-php
+      - php-mysql
+      - php-json
+  when: >
+    ansible_os_family == "Debian"
+
 - set_fact:
     role_packages: "{{ role_packages }} + [ '{{zabbix_pkg_prefix}}-phpfrontend' ]"
   when: >
@@ -78,12 +102,23 @@
     result_mysql_check is failed and
     ansible_os_family == "Suse"
 
+- name: setup MySQL DB (Debian)
+  command: bash -c "zcat /usr/share/doc/{{zabbix_pkg_prefix}}-server-mysql/{{_sql_file}} | mysql -uzabbix -p{{lookup(passdb, zabbix_server_db_pass)}} -h {{zabbix_server_db_host}} zabbix"
+  loop_control:
+    loop_var: _sql_file
+  with_items:
+    - create.sql.gz
+  when: >
+    zabbix_backend == "mysql" and
+    result_mysql_check is failed and
+    ansible_os_family == "Debian"
+
 - name: Configure Zabbix Server
   template:
     src: zabbix_server.conf.j2
     dest: /etc/zabbix/zabbix_server.conf
     owner: root
-    group: zabbixs
+    group: zabbix
     mode: u=rw,g=r,o=
   notify:
     - restart zabbix
@@ -103,6 +138,8 @@
     mode: 0644
   notify:
     - restart httpd
+  when: >
+    ansible_os_family != "Debian"
 
 - name: create PHP Zabbix configuration
   template:
@@ -113,12 +150,24 @@
   notify:
     - restart httpd
 
-- name: enable php7 module
+- name: enable php module
   apache2_module:
     state: present
-    name: php7
+    name: "{{zabbix_php|default('php7')}}"
   notify:
     - restart httpd
+  when: >
+    ansible_os_family != "Debian"
+
+# on debian apache2_module barfs even with all possible force flags set
+- name: enable php module
+  shell: "a2enmod {{zabbix_php|default('php7')}}"
+  register: _a2enmod_result
+  changed_when: "'systemctl restart' in _a2enmod_result.stdout"
+  notify:
+    - restart httpd
+  when: >
+    ansible_os_family == "Debian"
 
 - name: enable zabbix in Apache
   shell: a2enflag zabbix
@@ -126,6 +175,17 @@
   changed_when: _a2enflag_result.stdout == ''
   notify:
     - restart httpd
+  when: >
+    ansible_os_family != "Debian"
+
+- name: enable zabbix in Apache
+  shell: a2enconf zabbix
+  register: _a2enconf_result
+  changed_when: _a2enconf_result.stdout == ''
+  notify:
+    - restart httpd
+  when: >
+    ansible_os_family == "Debian"
 
 - name: enable and start Apache Server
   service:
@@ -133,6 +193,8 @@
     enabled: yes
     state: started
     daemon_reload: yes
+  when: >
+    ansible_os_family != "Debian"
 
 # TODO: swap out ignore errors for basic_host firewalld check
 - name: Open the Firewalld port 80/tcp on Zabbix

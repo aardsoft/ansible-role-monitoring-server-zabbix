@@ -9,7 +9,7 @@
     ],
     "templates": [
       {
-        "template": "scheduler",
+        "template": "Scheduler",
         "name": "Scheduler",
         "description": "",
         "groups": [

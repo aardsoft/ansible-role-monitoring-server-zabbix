@@ -43,7 +43,7 @@ LogType={{zabbix_server.log_type|default('console')}}
 # LogFile=
 
 {% if zabbix_server.log_type is defined and zabbix_server.log_type == 'file' %}
-LogFile={{zabbix_server.log_file|default('/var/log/zabbixs/zabbix_server.log')}}
+LogFile={{zabbix_server.log_file|default('/var/log/zabbix/zabbix_server.log')}}
 {% endif %}
 
 ### Option: LogFileSize
@@ -74,7 +74,7 @@ LogFile={{zabbix_server.log_file|default('/var/log/zabbixs/zabbix_server.log')}}
 #
 # Mandatory: no
 # Default:
-PidFile=/run/zabbixs/zabbix_server.pid
+PidFile=/run/zabbix/zabbix_server.pid
 
 ### Option: SocketDir
 #	IPC socket directory.
@@ -82,7 +82,7 @@ PidFile=/run/zabbixs/zabbix_server.pid
 #
 # Mandatory: no
 # Default:
-SocketDir=/run/zabbixs
+SocketDir=/run/zabbix
 
 ### Option: DBHost
 #	Database host name.

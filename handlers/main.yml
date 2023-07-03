@@ -5,5 +5,5 @@
 
 - name: restart zabbix
   service:
-    name: zabbix_server
+    name: "{{zabbix_service}}"
     state: restarted
