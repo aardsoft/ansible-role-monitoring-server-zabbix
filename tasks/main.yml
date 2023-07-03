@@ -142,9 +142,19 @@
 
 - name: Open the Firewalld port 10051/tcp on Zabbix
   firewalld: port=10051/tcp permanent=yes state=enabled immediate=yes zone=internal
+- name: create script directories
+  file:
+    state: directory
+    mode: 0750
+    path: "{{zabbix_datadir}}/{{_directory}}"
+  with_items:
+    - alertscripts
+    - externalscripts
+  loop_control:
+    loop_var: _directory
 
 - name: install default alert scripts
-  copy:
+  template:
     dest: "{{zabbix_datadir}}/alertscripts/{{_script.value.src|default(_script.key)}}"
     src: "{{_script.value.src|default(_script.key)}}"
     owner: root
