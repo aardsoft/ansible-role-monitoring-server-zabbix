@@ -134,14 +134,19 @@
     state: started
     daemon_reload: yes
 
+# TODO: swap out ignore errors for basic_host firewalld check
 - name: Open the Firewalld port 80/tcp on Zabbix
   firewalld: service=http permanent=yes state=enabled immediate=yes zone=internal
+  ignore_errors: True
 
 - name: Open the Firewalld port 10050/tcp on Zabbix
   firewalld: port=10050/tcp permanent=yes state=enabled immediate=yes zone=internal
+  ignore_errors: True
 
 - name: Open the Firewalld port 10051/tcp on Zabbix
   firewalld: port=10051/tcp permanent=yes state=enabled immediate=yes zone=internal
+  ignore_errors: True
+
 - name: create script directories
   file:
     state: directory
