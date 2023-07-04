@@ -212,7 +212,7 @@
 - name: create script directories
   file:
     state: directory
-    mode: 0750
+    mode: 0755
     path: "{{zabbix_datadir}}/{{_directory}}"
   with_items:
     - alertscripts
