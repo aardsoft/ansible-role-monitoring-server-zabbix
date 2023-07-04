@@ -536,6 +536,7 @@ Timeout=4
 # Mandatory: no
 # Default:
 # FpingLocation=/usr/sbin/fping
+FpingLocation={{zabbix_server.paths.fping|default('/usr/sbin/fping')}}
 
 ### Option: Fping6Location
 #	Location of fping6.
@@ -544,7 +545,7 @@ Timeout=4
 #
 # Mandatory: no
 # Default:
-# Fping6Location=/usr/sbin/fping6
+Fping6Location={{zabbix_server.paths.fping6|default('/usr/sbin/fping6')}}
 
 ### Option: SSHKeyLocation
 #	Location of public and private keys for SSH checks and actions.
