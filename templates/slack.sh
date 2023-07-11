@@ -48,6 +48,8 @@ payload="payload={\"channel\": \"${to//\"/\\\"}\",  \
 \"attachments\": [{\"fallback\": \"${subject//\"/\\\"}\", \"title\": \"${subject//\"/\\\"}\", \"text\": \"${message//\"/\\\"}\", \"color\": \"${color}\"}], \
 \"icon_emoji\": \"${emoji}\"}"
 
+payload=`echo $payload | tr -d '\r'`
+
 # Execute the HTTP POST request of the payload to Slack via curl, storing stdout (the response body)
 return=$(curl $proxy -sm 5 --data-urlencode "${payload}" $url -A 'zabbix-slack-alertscript / https://github.com/ericoc/zabbix-slack-alertscript')
 
