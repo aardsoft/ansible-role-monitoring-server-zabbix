@@ -74,7 +74,16 @@
     zabbix_pkg_prefix == "zabbix50"
 
 - include_role:
-    name: basic-host
+    name: data-utilities
+    tasks_from: install_packages
+  vars:
+    role_bootstrap_packages:
+      - https://repo.zabbix.com/zabbix/5.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.0-1+focal_all.deb
+  when: >
+    ansible_os_family == "Debian"
+
+- include_role:
+    name: data-utilities
     tasks_from: install_packages
 
 - name: Check MySQL DB
