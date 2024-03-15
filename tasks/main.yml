@@ -259,6 +259,17 @@
     state: present
     host_groups: "{{zabbix_default_hostgroups}}"
 
+- name: create extra host groups
+  become: no
+  local_action:
+    module: zabbix_group
+    server_url: "{{zabbix_server_url}}"
+    login_user: Admin
+    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    state: present
+    host_groups: "{{zabbix_server.host_groups}}"
+  when: zabbix_server.host_groups is defined
+
 - name: import default zabbix json templates
   become: no
   local_action:
