@@ -1,0 +1,17 @@
+- name: import default zabbix json templates ({{_template.key}})
+  become: false
+  vars:
+    ansible_shell_type: sh
+    ansible_user: "{{ zabbix_api_user|default('Admin') }}"
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 80
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    ansible_httpapi_pass: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    ansible_host: "{{zabbix_server_ip|default(zabbix_server)}}"
+  community.zabbix.zabbix_template:
+    template_json: "{{ lookup('file', _template.value.src) }}"
+    template_groups: "{{ _template.value.groups }}"
+    state: "{{ _template.value.state|default('present') }}"
+  ignore_errors: "{{_template.value.optional|default(true)}}"

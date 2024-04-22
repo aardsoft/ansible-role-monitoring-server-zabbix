@@ -2,7 +2,7 @@
 # tasks file for zabbix-server
 #
 
-- include: centos_legacy.yml
+- include_tasks: centos_legacy.yml
   when: >
     ansible_os_family == "RedHat" and
     ansible_distribution_major_version == '7'
@@ -249,38 +249,43 @@
   loop_control:
     loop_var: _script
 
-- name: create host groups
-  become: no
-  local_action:
-    module: zabbix_group
-    server_url: "{{zabbix_server_url}}"
-    login_user: Admin
-    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+- name: create a new host or update information
+  become: false
+  vars:
+    ansible_shell_type: sh
+    ansible_user: "{{ zabbix_api_user|default('Admin') }}"
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 80
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    ansible_httpapi_pass: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    ansible_host: "{{zabbix_server_ip|default(zabbix_server)}}"
+  community.zabbix.zabbix_host:
+    host_name: "{{ ansible_hostname }}"
+    host_groups: "{{ host_groups }}"
     state: present
-    host_groups: "{{zabbix_default_hostgroups}}"
 
 - name: create extra host groups
-  become: no
-  local_action:
-    module: zabbix_group
-    server_url: "{{zabbix_server_url}}"
-    login_user: Admin
-    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
-    state: present
+  become: false
+  vars:
+    ansible_shell_type: sh
+    ansible_user: "{{ zabbix_api_user|default('Admin') }}"
+    ansible_network_os: community.zabbix.zabbix
+    ansible_connection: httpapi
+    ansible_httpapi_port: 80
+    ansible_httpapi_use_ssl: false
+    ansible_httpapi_validate_certs: false
+    ansible_httpapi_pass: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
+    ansible_host: "{{zabbix_server_ip|default(zabbix_server)}}"
+  community.zabbix.zabbix_group:
+    host_name: "{{ ansible_hostname }}"
     host_groups: "{{zabbix_server.host_groups}}"
+    state: present
   when: zabbix_server.host_groups is defined
 
 - name: import default zabbix json templates
-  become: no
-  local_action:
-    module: zabbix_template
-    login_user: Admin
-    login_password: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
-    server_url: "{{zabbix_server_url}}"
-    template_json: "{{ lookup('file', _template.value.src) }}"
-    template_groups: "{{ _template.value.groups }}"
-    state: "{{ _template.value.state|default('present') }}"
+  include_tasks: "import_{{_template.value.type}}_template.yml"
   with_dict: "{{zabbix_default_templates}}"
   loop_control:
     loop_var: _template
-  when: _template.value.type == "json"
