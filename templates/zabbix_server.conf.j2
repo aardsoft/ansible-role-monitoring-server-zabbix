@@ -7,6 +7,13 @@
 {% set zabbix_server = {} %}
 {% endif %}
 
+{% if zabbix_run_dir is undefined %}
+  {% if ansible_os_family == "Suse" %}
+{% set zabbix_run_dir = "/run/zabbixs" %}
+  {% else %}
+{% set zabbix_run_dir = "/run/zabbix" %}
+  {% endif %}
+{% endif %}
 ############ GENERAL PARAMETERS #################
 
 ### Option: ListenPort
@@ -74,7 +81,7 @@ LogFile={{zabbix_server.log_file|default('/var/log/zabbix/zabbix_server.log')}}
 #
 # Mandatory: no
 # Default:
-PidFile=/run/zabbix/zabbix_server.pid
+PidFile={{zabbix_run_dir}}/zabbix_server.pid
 
 ### Option: SocketDir
 #	IPC socket directory.
@@ -82,7 +89,7 @@ PidFile=/run/zabbix/zabbix_server.pid
 #
 # Mandatory: no
 # Default:
-SocketDir=/run/zabbix
+SocketDir={{zabbix_run_dir}}
 
 ### Option: DBHost
 #	Database host name.

@@ -2,7 +2,11 @@
 # tasks file for zabbix-server
 #
 
+# TODO: check setup on other distributions as well
+- set_fact:
+    zabbix_server_group: zabbixs
   when: >
+    ansible_os_family == "Suse"
 
 - set_fact:
     role_packages:
@@ -124,7 +128,7 @@
     src: zabbix_server.conf.j2
     dest: /etc/zabbix/zabbix_server.conf
     owner: root
-    group: zabbix
+    group: "{{zabbix_server_group|default('zabbix')}}"
     mode: u=rw,g=r,o=
   notify:
     - restart zabbix
