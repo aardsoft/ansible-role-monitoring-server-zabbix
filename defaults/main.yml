@@ -36,27 +36,6 @@ zabbix_default_hostgroups:
   - Virtualization
 
 zabbix_default_templates:
-  linux_network_interfaces:
-    src: zbx_template_Linux_network_interfaces.json
-    type: json
-    url: ""
-    description: Template Module Linux network interfaces by Zabbix agent
-    groups:
-      - Templates/Modules
-  linux_block_devices:
-    src: zbx_template_Linux_block_devices.json
-    type: json
-    url: ""
-    description: Template Module Linux block devices by Zabbix agent
-    groups:
-      - Templates/Modules
-  linux_filesystem:
-    src: zbx_template_Linux_filesystems.json
-    type: json
-    url: ""
-    description: Template Module Linux filesystems by Zabbix agent
-    groups:
-      - Templates/Modules
   hp_dl380_g9:
     src: zbx_template_impi_hp_dl380_g9.json
     type: json
