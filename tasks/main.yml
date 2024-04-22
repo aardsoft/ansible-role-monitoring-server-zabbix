@@ -2,6 +2,10 @@
 # tasks file for zabbix-server
 #
 
+- set_fact:
+    __db_host: "{{zabbix_server.db.host|default(zabbix_server_db_host)}}"
+    __db_pass: "{{zabbix_server.db.passdb_entry|default(zabbix_server_db_pass)}}"
+
 # TODO: check setup on other distributions as well
 - set_fact:
     zabbix_server_group: zabbixs
@@ -88,19 +92,19 @@
     tasks_from: install_packages
 
 - name: Check MySQL DB
-  command: bash -c "mysql -uzabbix -p{{lookup(passdb, zabbix_server_db_pass)}} -h {{zabbix_server_db_host}} -e 'select * from users;' zabbix"
+  command: bash -c "mysql -uzabbix -p{{lookup(passdb, __db_pass)}} -h {{__db_host}} -e 'select * from users;' zabbix"
   register: result_mysql_check
   ignore_errors: True
 
 # TODO: MySQL hostname could be dynamic from config
 - name: setup MySQL DB (RedHat)
-  command: bash -c "zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p{{lookup(passdb, zabbix_server_db_pass)}} -h {{zabbix_server_db_host}} zabbix"
+  command: bash -c "zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p{{lookup(passdb, __db_pass)}} -h {{__db_host}} zabbix"
   when: >
     result_mysql_check is failed and
     ansible_os_family == "RedHat"
 
 - name: setup MySQL DB (Suse)
-  command: bash -c "cat /usr/share/doc/packages/{{zabbix_pkg_prefix}}-server/mysql/{{_sql_file}} | mysql -uzabbix -p{{lookup(passdb, zabbix_server_db_pass)}} -h {{zabbix_server_db_host}} zabbix"
+  command: bash -c "cat /usr/share/doc/packages/{{zabbix_pkg_prefix}}-server/mysql/{{_sql_file}} | mysql -uzabbix -p{{lookup(passdb, __db_pass)}} -h {{__db_host}} zabbix"
   loop_control:
     loop_var: _sql_file
   with_items:
@@ -113,7 +117,7 @@
     ansible_os_family == "Suse"
 
 - name: setup MySQL DB (Debian)
-  command: bash -c "zcat /usr/share/doc/{{zabbix_pkg_prefix}}-server-mysql/{{_sql_file}} | mysql -uzabbix -p{{lookup(passdb, zabbix_server_db_pass)}} -h {{zabbix_server_db_host}} zabbix"
+  command: bash -c "zcat /usr/share/doc/{{zabbix_pkg_prefix}}-server-mysql/{{_sql_file}} | mysql -uzabbix -p{{lookup(passdb, __db_pass)}} -h {{__db_host}} zabbix"
   loop_control:
     loop_var: _sql_file
   with_items:

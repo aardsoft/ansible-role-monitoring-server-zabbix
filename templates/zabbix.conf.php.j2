@@ -4,11 +4,11 @@
 global $DB;
 
 $DB['TYPE']     = 'MYSQL';
-$DB['SERVER']   = '{{zabbix_server_db_host}}';
+$DB['SERVER']   = '{{__db_host}}';
 $DB['PORT']     = '0';
 $DB['DATABASE'] = 'zabbix';
 $DB['USER']     = 'zabbix';
-$DB['PASSWORD'] = '{{lookup(passdb, zabbix_server_db_pass)}}';
+$DB['PASSWORD'] = '{{lookup(passdb, __db_pass)}}';
 
 // Schema name. Used for IBM DB2 and PostgreSQL.
 $DB['SCHEMA'] = '';
