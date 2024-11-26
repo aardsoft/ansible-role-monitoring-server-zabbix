@@ -254,7 +254,7 @@
   loop_control:
     loop_var: _script
 
-- name: create a new host or update information
+- name: create default host groups
   become: false
   vars:
     ansible_shell_type: sh
@@ -266,9 +266,8 @@
     ansible_httpapi_validate_certs: false
     ansible_httpapi_pass: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
     ansible_host: "{{zabbix_server_ip|default(zabbix_server)}}"
-  community.zabbix.zabbix_host:
-    host_name: "{{ ansible_hostname }}"
-    host_groups: "{{ host_groups }}"
+  community.zabbix.zabbix_group:
+    host_groups: "{{zabbix_default_hostgroups}}"
     state: present
 
 - name: create extra host groups
@@ -284,7 +283,6 @@
     ansible_httpapi_pass: "{{lookup(passdb, zabbix_server_admin_passwd)}}"
     ansible_host: "{{zabbix_server_ip|default(zabbix_server)}}"
   community.zabbix.zabbix_group:
-    host_name: "{{ ansible_hostname }}"
     host_groups: "{{zabbix_server.host_groups}}"
     state: present
   when: zabbix_server.host_groups is defined
